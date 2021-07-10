@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">To Do List</string>
+    <string name="add_task">Add task</string>
+    <string name="close_button">Close button</string>
+    <string name="add_new_item">Add New Item</string>
+    <string name="enter_to_do_text">Enter To Do Item Text</string>
+    <string name="submit">Submit</string>
+    <string name="saved_with_id">\"Item saved with ID \"</string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "340452950398",
+    "project_id": "to-do-list-860d9",
+    "storage_bucket": "to-do-list-860d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340452950398:android:9d59e56372c68be639f32f",
+        "android_client_info": {
+          "package_name": "com.exalture.todolist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340452950398-84efmoqcvq0v0tea2kbhauj4anqrobth.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQUHh2WC49NOm-Xq8A4dftMG8y9x5cdio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340452950398-84efmoqcvq0v0tea2kbhauj4anqrobth.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
