@@ -3,7 +3,7 @@ package com.exalture.todolist
 class ToDoItem {
 
     // Same as static in java
-    companion object Factory {
+    companion object {
         fun create(): ToDoItem = ToDoItem()
     }
 

@@ -6,4 +6,5 @@
     <string name="enter_to_do_text">Enter To Do Item Text</string>
     <string name="submit">Submit</string>
     <string name="saved_with_id">\"Item saved with ID \"</string>
+    <string name="you_have_no_task">You have no task!</string>
 </resources>
