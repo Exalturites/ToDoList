@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.exalture.todolist.Constants.FIREBASE_ITEM
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), ItemRowListener {
 
@@ -27,9 +28,6 @@ class MainActivity : AppCompatActivity(), ItemRowListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //reference for FAB
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-
         //Adding click listener for FAB
         fab.setOnClickListener {
             //Show Dialog here to add new Item
@@ -38,21 +36,19 @@ class MainActivity : AppCompatActivity(), ItemRowListener {
 
         mDatabase = FirebaseDatabase.getInstance().reference
 
-        val recyclerView: RecyclerView = findViewById(R.id.task_recyclerview)
-        val noTaskView: TextView = findViewById(R.id.no_task)
         toDoAdapter = ToDoAdapter(this, toDoItemList)
-        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-        recyclerView.itemAnimator = DefaultItemAnimator()
-        recyclerView.adapter = toDoAdapter
+        task_recyclerview.layoutManager = LinearLayoutManager(applicationContext)
+        task_recyclerview.itemAnimator = DefaultItemAnimator()
+        task_recyclerview.adapter = toDoAdapter
 
         mDatabase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 toDoItemList.clear()
                 addDataToList(snapshot)
                 if (toDoItemList.size > 0) {
-                    noTaskView.visibility = View.GONE
+                    no_task.visibility = View.GONE
                 } else {
-                    noTaskView.visibility = View.VISIBLE
+                    no_task.visibility = View.VISIBLE
                 }
             }
 
