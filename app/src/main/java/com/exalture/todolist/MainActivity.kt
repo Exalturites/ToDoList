@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
 import com.exalture.todolist.Constants.FIREBASE_ITEM
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.*
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity(), ItemRowListener {
 
     //Get Access to Firebase database, no need of any URL, Firebase
     //identifies the connection via the package name of the app
-    lateinit var mDatabase: DatabaseReference
+    private lateinit var mDatabase: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity(), ItemRowListener {
             while (itemsIterator.hasNext()) {
                 //get current item
                 val currentItem = itemsIterator.next()
+                //calling companion object
                 val todoItem = ToDoItem.create()
                 //get current data in a map
                 val map = currentItem.value as HashMap<*, *>
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity(), ItemRowListener {
                 todoItem.itemId = currentItem.key
                 todoItem.done = map["done"] as Boolean?
                 todoItem.itemText = map["itemText"] as String?
-                toDoItemList.add(todoItem);
+                toDoItemList.add(todoItem)
             }
         }
         //alert adapter that has changed
@@ -78,7 +80,7 @@ class MainActivity : AppCompatActivity(), ItemRowListener {
     }
 
     /**
-     * This method will show a dialog bix where user can enter new item
+     * This method will show a dialog box where user can enter new item
      * to be added
      */
     private fun addNewItemDialog() {
@@ -87,7 +89,7 @@ class MainActivity : AppCompatActivity(), ItemRowListener {
         alert.setMessage(getString(R.string.add_new_item))
         alert.setTitle(getString(R.string.enter_to_do_text))
         alert.setView(itemEditText)
-        alert.setPositiveButton(getString(R.string.submit)) { dialog, positiveButton ->
+        alert.setPositiveButton(getString(R.string.submit)) { dialog, _ ->
             val todoItem = ToDoItem.create()
             todoItem.itemText = itemEditText.text.toString()
             todoItem.done = false
@@ -105,7 +107,7 @@ class MainActivity : AppCompatActivity(), ItemRowListener {
 
     override fun modifyItemState(itemObjectId: String, isDone: Boolean) {
         val itemReference = mDatabase.child(FIREBASE_ITEM).child(itemObjectId)
-        itemReference.child("done").setValue(isDone);
+        itemReference.child("done").setValue(isDone)
     }
 
     override fun onItemDelete(itemObjectId: String) {

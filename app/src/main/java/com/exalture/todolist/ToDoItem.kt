@@ -2,6 +2,7 @@ package com.exalture.todolist
 
 class ToDoItem {
 
+    // Same as static in java
     companion object Factory {
         fun create(): ToDoItem = ToDoItem()
     }
